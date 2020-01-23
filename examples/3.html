@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>D3 Path Transition</title>
+			<script src="http://d3js.org/d3.v2.min.js"></script>
+	</head>
+
+	<body>
+		<h1>Vis Exploration - D3 - SVG Transition<h1>
+
+			<div id="co2"></div>
+
+
+
+	<script src="assumptions.js"></script>
+	<script src="example.js"></script>
+<script>
+
+data = [
+  { year: 2002, average: 100 },
+  { year: 2003, average: 50 },
+  { year: 2004, average: 74 },
+  { year: 2005, average: 72 },
+  { year: 2006, average: 68 },
+  { year: 2007, average: 20 },
+  { year: 2008, average: 24 },
+  { year: 2009, average: 5 },
+  { year: 2010, average: 12 },
+  { year: 2011, average: 90 },
+  { year: 2012, average: 90 }
+];
+
+// stackflow example didn't specify height, width, margin x, y - so make some assumptions
+
+height = 400;
+width = 400;
+margin = { left: 5, right: 5, top: 5, bottom: 5 };
+
+x = d3.scale.linear()
+	.domain([2002, 2012])
+	.range([0,400]);
+
+y = d3.scale.linear()
+	.domain([0,100])
+	.range([0, 400]);
+
+  // Create the area element for each object - a function that will be passed to "path"
+var area = d3.svg.area()
+  .x(function(d) { return x(d.year); })
+  .y0(height)
+  .y1(function(d) { return y(d.average); });
+
+var svg = d3.select("#co2").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+.attr("transform", "translate(" + margin.left, "," + margin.top + ")")
+  // define a new 'g' to scope the transition, and keep separate from the margin adjusting transform above
+  .append("g");
+
+// apply the scale transform to the entire svg DOM element
+// note: (0,0) in SVG is top-left, so also need to rebase the bottom of the graph during the transition
+svg
+  .attr("transform", "translate(0," + height + ") scale(1, 0)")
+  .transition().duration(2000)
+  .attr("transform", "translate(0,0) scale(1, 1)");
+
+svg.append("path")
+  // pull in data to the path
+  .datum(data)
+    .attr("class", "area")
+    // passing in the area function, for each object
+    .attr("d", area)
+      .style("fill-opacity", "1");
+</script>
+      </body>
+  </html>

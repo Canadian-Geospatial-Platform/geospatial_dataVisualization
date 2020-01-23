@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>Bar chart with D3.js</title>
+<link rel="stylesheet" type="text/css" href="/css/cssbar.css">
+<style>
+/* .bar { fill:  teal; }
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 400;
+} */
+.axis path, .axis line {
+    fill: none;
+    stroke: #fff;
+  }
+.axis text {
+  	font-size: 13px;
+  }
+.bar {
+    fill: #8CD3DD;
+  }
+.bar:hover {
+    fill: #F56C4E;
+  }
+svg text.label {
+  fill:black;
+  font: 15px;
+  font-weight: 400;
+  text-anchor: middle;
+}
+#chartID {
+	min-width: 531px;
+}
+</style>
+<body>
+<div id ="chartID"></div>
+ 
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script type="text/javascript">
+var data = [{
+    "letter": "A",
+    "frequency": "5.01"
+}, {
+    "letter": "B",
+    "frequency": "7.80"
+}, {
+    "letter": "C",
+    "frequency": "15.35"
+}, {
+    "letter": "D",
+    "frequency": "22.70"
+}, {
+    "letter": "E",
+    "frequency": "34.25"
+}, {
+    "letter": "F",
+    "frequency": "10.21"
+}, {
+    "letter": "G",
+    "frequency": "7.68"
+}, ];
+
+
+//Setting up of our svg with proper calculations
+var svg = d3.select("body")
+    .append("svg").attr("width", 500).attr("height", 300);
+var margin = {
+    top: 40,
+    right: 20,
+    bottom: 40,
+    left: 40
+};
+var width = svg.attr("width") - margin.left - margin.right;
+var height = svg.attr("height") - margin.top - margin.bottom;
+
+//Plotting our base area in svg in which chart will be shown
+var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+//X and Y scaling
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.4);
+var y = d3.scaleLinear().rangeRound([height, 0]);
+
+x.domain(data.map(function(d) {
+    return d.letter;
+}));
+y.domain([0, d3.max(data, function(d) {
+    return +d.frequency;
+})]);
+
+//Final Plotting
+
+//for x axis
+g.append("g")
+    .call(d3.axisBottom(x))
+    .attr("transform", "translate(0," + height + ")");
+
+//for y axis
+g.append("g")
+    .call(d3.axisLeft(y))
+    .append("text").attr("transform", "rotate(-90)").attr("text-anchor", "end");
+
+//for rectangles
+g.selectAll(".bar")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) {
+        return x(d.letter);
+    })
+    .attr("y", function(d) {
+        return y(d.frequency);
+    })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) {
+        return height - y(d.frequency);
+    });
+
+g.selectAll(".text")
+    .data(data)
+    .enter()
+    .append("text")
+    .attr("dy", ".75em")
+    .attr("y", function(d) {
+        return y(d.frequency) - 16;
+    })
+    .attr("x", function(d) {
+        return x(d.letter) + x.bandwidth() / 2;
+    })
+    .attr("text-anchor", "middle")
+    .text(function(d) {
+        return d.frequency;
+    });
+
+</script>
+<body>
+<html>

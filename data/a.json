@@ -1,0 +1,28 @@
+[{
+    "id":0,
+    "salesperson": "Jon",
+    "age": 30,
+    "sales": 33,
+    "location": "The Wall"
+},
+{
+    "id":1,
+    "salesperson": "Arya",
+    "age": 12,
+    "sales":10,
+    "location": "Braavos"
+},
+{
+    "id":2,
+    "salesperson": "Cersei",
+    "age": 42,
+    "sales":90,
+    "location": "Kings Landing"
+},
+{
+    "id":3,
+    "salesperson": "Tyrion",
+    "age": 40,
+    "sales":83,
+    "location": "Kings Landing"
+}]

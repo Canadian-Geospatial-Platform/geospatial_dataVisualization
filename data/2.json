@@ -1,0 +1,12 @@
+[{"name":"jhon","hours":"8","months":"June","emp_id":"1"},
+ {"name":"jack","hours":"6","months":"June","emp_id":"2"},
+ {"name":"jim","hours":"7","months":"June","emp_id":"3"},
+ {"name":"tim","hours":"4","months":"June","emp_id":"4"},
+ {"name":"jhon","hours":"6","months":"July","emp_id":"1"},
+ {"name":"jack","hours":"7","months":"July","emp_id":"2"},
+ {"name":"jim","hours":"8","months":"July","emp_id":"3"},
+ {"name":"tim","hours":"6","months":"July","emp_id":"4"},
+ {"name":"jhon","hours":"8","months":"August","emp_id":"1"},
+ {"name":"jack","hours":"9","months":"August","emp_id":"2"},
+ {"name":"jim","hours":"7","months":"August","emp_id":"3"},
+ {"name":"tim","hours":"8","months":"August","emp_id":"4"}]
