@@ -5,8 +5,21 @@ Using D3 Js Library we can build differents type of Chart Like.
 - Bar Chart.
 - Line Chart.
 - Histogram Chart.
+- Heatmap chart.
 
+with D3 Js is possible to create dynamic chart in combination with D3. js Mouse Events.
 
+- Mousedown.
+- Mouseup.
+- Click.
+- Dblclick.
+- Mouseover.
+- Mouseout.
+- Mouseenter.
+- Mouseleave.
+
+## Installation
+Just  clone this repository locally in your computer, this examples was build using D3js Version 4.
 
 # List of D3 js Chart examples.
 
