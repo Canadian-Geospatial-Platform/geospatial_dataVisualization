@@ -1,5 +1,10 @@
-# geospatial_dataVisualization
-Data visualization using D3 Js building different kind of chart( depending of the data processing) could be use on the Geospatial platform project..
+# Geospatial Data Visualization
+
+Using D3 Js Library we can build differents type of Chart Like.
+- Pie Chart.
+- Bar Chart.
+- Line Chart.
+- Histogram Chart.
 
 
 
