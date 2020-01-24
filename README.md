@@ -17,6 +17,14 @@ with D3 Js is possible to create dynamic chart in combination with D3. js Mouse 
 - Mouseout.
 - Mouseenter.
 - Mouseleave.
+for D3 js can read data from different format, like.
+- GeoJson.
+- Json
+- CSV(excel).
+- URL Json API.
+
+using 
+- d3.json("URL API") or d3.json("URL File data Js GeoJson") or d3.csv("URL file Data Js csv")
 
 ## Installation
 Just  clone this repository locally in your computer, this examples was build using D3js Version 4.
